@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -21,11 +22,11 @@ import java.util.List;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyViewHolder> {
 
     private Context context;
-   List<ProductsResponse> productsResponse = new ArrayList<>();
+     List<ProductsResponse> productsResponse = new ArrayList<>() ;
 
-    public ProductsAdapter(Context context, ProductsMainResponse productsResponse) {
+    public ProductsAdapter(Context context, List<ProductsResponse> productsResponse) {
         this.context = context;
-        this.productsResponse = (List<ProductsResponse>) productsResponse;
+        this.productsResponse = productsResponse;
     }
 
     @NonNull
@@ -33,14 +34,20 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         ItemlistBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.itemlist,parent,false);
-
-      return new MyViewHolder(binding.getRoot());
+        return new MyViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.binding.setProductsIds(productsResponse.get(position));
+        holder.binding.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(context, "My Item"+position, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -52,8 +59,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ItemlistBinding binding;
 
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
+        public MyViewHolder(ItemlistBinding binding) {
+            super(binding.getRoot());
             this.binding = binding;
         }
     }

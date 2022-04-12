@@ -12,7 +12,11 @@ import com.example.mvvmproject.modeldata.ProductsMainResponse;
 import com.example.mvvmproject.R;
 import com.example.mvvmproject.adapter.ProductsAdapter;
 import com.example.mvvmproject.databinding.ActivityMainBinding;
+import com.example.mvvmproject.modeldata.ProductsResponse;
 import com.example.mvvmproject.viewsmodel.ProductViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductsActivity extends AppCompatActivity {
 
@@ -34,8 +38,10 @@ public class ProductsActivity extends AppCompatActivity {
         productModelView.getMainResponse().observe(this, new Observer<ProductsMainResponse>() {
             @Override
             public void onChanged(ProductsMainResponse productsMainResponse) {
+                List<ProductsResponse> productsResponses = new ArrayList<>();
+                productsResponses = productsMainResponse.getProducts();
 
-                ProductsAdapter productsAdapter = new ProductsAdapter(ProductsActivity.this,productsMainResponse);
+                ProductsAdapter productsAdapter = new ProductsAdapter(ProductsActivity.this,productsResponses);
                 binding.recyclerView.setAdapter(productsAdapter);
             }
         });

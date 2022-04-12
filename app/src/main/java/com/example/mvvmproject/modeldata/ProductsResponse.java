@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.BindingAdapter;
+import androidx.databinding.library.baseAdapters.BR;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -50,44 +51,64 @@ public class ProductsResponse  extends BaseObservable {
 
     public void setId(int id) {
         this.id = id;
+      notifyPropertyChanged(BR.id);
 
     }
 
     public void setTitle(String title) {
         this.title = title;
+        notifyPropertyChanged(BR.title);
+
 
     }
 
     public void setDescription(String description) {
         this.description = description;
+
+        notifyPropertyChanged(BR.description);
+
     }
 
     public void setPrice(int price) {
         this.price = price;
+        notifyPropertyChanged(BR.price);
+
     }
 
     public void setDiscountPercentage(double discountPercentage) {
         this.discountPercentage = discountPercentage;
+        notifyPropertyChanged(BR.discountPercentage);
+
     }
 
     public void setRating(String rating) {
         this.rating = rating;
+        notifyPropertyChanged(BR.rating);
+
     }
 
     public void setStock(int stock) {
         this.stock = stock;
+        notifyPropertyChanged(BR.stock);
+
     }
 
     public void setBrand(String brand) {
         this.brand = brand;
+        notifyPropertyChanged(BR.brand);
+
     }
 
     public void setCategory(String category) {
         this.category = category;
+        notifyPropertyChanged(BR.category);
+
     }
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+        notifyPropertyChanged(BR.thumbnail);
+
     }
 
     public void setImages(List<String> images) {

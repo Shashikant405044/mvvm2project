@@ -20,12 +20,12 @@ public class ProductsMainResponse  extends BaseObservable {
     @SerializedName("limit")
     private  String limit;
 
-
-    public ProductsResponse getProducts() {
-        return (ProductsResponse) products;
+    public List<ProductsResponse> getProducts() {
+        return products;
     }
-    public void setProducts(ProductsResponse products) {
-        this.products = (List<ProductsResponse>) products;
+
+    public void setProducts(List<ProductsResponse> products) {
+        this.products = products;
     }
 
     public String getTotal() {

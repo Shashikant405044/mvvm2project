@@ -20,7 +20,6 @@ public class ProductViewModel extends AndroidViewModel {
 
   public MutableLiveData<ProductsMainResponse> getMainResponse()
   {
-
       return productRepository.getPostData();
   }
 
